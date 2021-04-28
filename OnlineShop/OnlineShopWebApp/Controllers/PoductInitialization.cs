@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using OnlineShopWebApp.Models;
 
-namespace OnlineShopWebApp.Models
+namespace OnlineShopWebApp.Controllers
 {
     public class ProductInitialization 
     {

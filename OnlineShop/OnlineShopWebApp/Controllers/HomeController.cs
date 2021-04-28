@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using OnlineShopWebApp.Controllers;
+
 
 namespace OnlineShopWebApp.Controllers
 {
@@ -10,7 +12,8 @@ namespace OnlineShopWebApp.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            var database = new ProductInitialization();
+            return View(database.products);
         }
 
     }
