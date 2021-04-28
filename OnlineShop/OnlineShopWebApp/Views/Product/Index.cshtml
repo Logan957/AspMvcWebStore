@@ -1,12 +1,19 @@
 ﻿@model IEnumerable<Product>
+
+
+
 @foreach (var p in Model)
 {
-    <div>
-        @p.Id
-        @p.Name
-        @p.Cost.ToString("c")
-        @p.Description
-        <p></p>
-    </div>
+        <h1>@p.Name</h1> 
+        <img src="https://lh3.googleusercontent.com/proxy/THWa7uptV7MYex8H1K0bNeRIg-mExFHx91hZAoLoIEMUVkkMI-1G7uPVRld-MfH7k-3KKC1Tvu7hp6kBhKq-QkkF64DsHULoVbksBefjLfLqlzrU5gBn" />
+        <h2>@p.Description</h2>
+        <b>@p.Cost.ToString("c")</b>
+        <a class="btn btn-primary" role="button" href="">Добавить в корзину</a>
+        
+    
 
-}
+ }
+
+
+<p><a href="https://localhost:44304/Home/Index">Продолжить покупку </a></p>
+

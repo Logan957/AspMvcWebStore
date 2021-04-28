@@ -3,14 +3,15 @@
 }
 @model IEnumerable<Product>;
 
-@foreach (var p in Model)
-{
-    <div>
-        @p.Id
-        @p.Name
+<div class="row"> 
+  @foreach (var p in Model)
+  {
+    <div class="col-3 card ">
+
+        <a style="color:black" href="https://localhost:44304/Product/Index/@p.Id">@p.Name</a>
         @p.Cost.ToString("c")
-        @p.Description
-        <p></p>
+        <p> <a class="btn btn-primary" role="button" href="">Добавить в корзину</a> </p>
     </div>
 
-}
+   }
+</div>
