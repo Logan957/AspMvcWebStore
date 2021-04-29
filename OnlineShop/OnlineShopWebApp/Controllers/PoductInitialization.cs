@@ -9,7 +9,7 @@ namespace OnlineShopWebApp.Controllers
 {
     public class ProductInitialization 
     {
-        public List<Product> products => new List<Product>
+        public List<Product> Products => new List<Product>
         {
 
             new Product
