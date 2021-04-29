@@ -15,7 +15,7 @@ namespace OnlineShopWebApp.Controllers
         public IActionResult Index(int? Id)
         {
             var database = new ProductInitialization();
-            var selectedProducts = database.products.Where(p => p.Id == Id);
+            var selectedProducts = database.Products.Where(p => p.Id == Id);
             return View(selectedProducts);
             
            

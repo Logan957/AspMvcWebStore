@@ -13,7 +13,7 @@ namespace OnlineShopWebApp.Controllers
         public IActionResult Index()
         {
             var database = new ProductInitialization();
-            return View(database.products);
+            return View(database.Products);
         }
 
     }
