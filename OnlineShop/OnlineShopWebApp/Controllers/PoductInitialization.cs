@@ -15,17 +15,21 @@ namespace OnlineShopWebApp.Controllers
             new Product
             { Id = 1, Name = "Ботинки",
              Cost = 500,
-             Description = "Туристические ботинки для походов"
+             Description = "Туристические ботинки для походов",
+             ImagePath ="/Images/image1.jpg"
+             
             },
             new Product
             { Id = 2, Name = "Мужская обувь",
              Cost = 300,
-             Description = "Повседневная обувь"
+             Description = "Повседневная обувь",
+             ImagePath ="/Images/image2.jpg"
             },
             new Product
             { Id = 3, Name = "Кроссовки",
              Cost = 700,
-             Description = "Кроссовки для бега"
+             Description = "Кроссовки для бега",
+             ImagePath ="/Images/image3.jpg"
             }
 
         };

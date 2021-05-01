@@ -7,7 +7,7 @@
   @foreach (var p in Model)
   {
     <div class="col-3 card ">
-        <img src="~/Images/Image_Shoes.jpg"/>
+        <img height="150" src="@p.ImagePath"/>
         <a style="color:black" href="/Product/Index/@p.Id">@p.Name</a>
         @p.Cost.ToString("c")
         <p> <a class="btn btn-primary" role="button" href="">Добавить в корзину</a> </p>
