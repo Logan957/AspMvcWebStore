@@ -12,10 +12,19 @@ namespace OnlineShopWebApp.Controllers
 {
     public class ProductController : Controller
     {
+        ProductInitialization productInitialization;
+        public ProductController()
+        {
+            productInitialization = new ProductInitialization();
+        }
         public IActionResult Index(int? Id)
         {
-            var database = new ProductInitialization();
-            var selectedProducts = database.Products.Where(p => p.Id == Id);
+            if (CartsRepository.TryGetByUserId(Constants.UserId) != null)
+            {
+                var count = CartsRepository.TryGetByUserId(Constants.UserId).Items.Sum(p => p.Amount);
+                ViewBag.Count = count;
+            }
+            var selectedProducts = productInitialization.Products.Where(p => p.Id == Id);
             return View(selectedProducts);
             
            

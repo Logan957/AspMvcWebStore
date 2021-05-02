@@ -3,15 +3,15 @@
 }
 @model IEnumerable<Product>;
 
-<div class="row"> 
-  @foreach (var p in Model)
-  {
-    <div class="col-3 card ">
-        <img height="150" src="@p.ImagePath"/>
-        <a style="color:black" href="/Product/Index/@p.Id">@p.Name</a>
-        @p.Cost.ToString("c")
-        <p> <a class="btn btn-primary" role="button" href="">Добавить в корзину</a> </p>
-    </div>
-
-   }
+<div class="row">
+    @foreach (var p in Model)
+    {
+        <div class="col-3 card ">
+            <img height="150" src="@p.ImagePath" />
+            <a style="color:black" href="/Product/Index/@p.Id">@p.Name</a>
+            @p.Cost.ToString("c")
+            <p> <a class="btn btn-primary" role="button" href="/Cart/add?productId=@p.Id">Добавить в корзину</a> </p>
+        </div>
+      
+    }
 </div>
