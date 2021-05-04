@@ -11,16 +11,20 @@ namespace OnlineShopWebApp.Controllers
     public class HomeController : Controller
     {
         private readonly ProductInitialization productInitialization;
+        private readonly CartsRepository cartsRepository;
+        private readonly Constants constants;
 
-        public HomeController()
+        public HomeController(Constants constants , ProductInitialization productInitialization, CartsRepository cartsRepository)
         {
-            productInitialization = new ProductInitialization();
+            this.productInitialization = productInitialization;
+            this.cartsRepository = cartsRepository;
+            this.constants = constants;
         }
         public IActionResult Index()
         {
-            if (CartsRepository.TryGetByUserId(Constants.UserId) != null)
+            if (cartsRepository.TryGetByUserId(constants.UserId) != null)
             {
-                var count = CartsRepository.TryGetByUserId(Constants.UserId).Items.Sum(p => p.Amount);
+                var count = cartsRepository.TryGetByUserId(constants.UserId).Items.Sum(p => p.Amount);
                 ViewBag.Count = count;
             }
             return View(productInitialization.Products);

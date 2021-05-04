@@ -9,18 +9,23 @@ namespace OnlineShopWebApp.Controllers
 {
     public class CartController : Controller
     {
+        private readonly Constants constants;
         private readonly ProductInitialization productInitialization;
-        public CartController()
+        private readonly CartsRepository cartsRepository;
+
+        public CartController( Constants constants, ProductInitialization productInitialization, CartsRepository cartsRepository)
         {
-            productInitialization = new ProductInitialization();
+            this.constants = constants;
+            this.productInitialization = productInitialization;
+            this.cartsRepository = cartsRepository;
         }
 
         public IActionResult Index()
         {
-            var cart = CartsRepository.TryGetByUserId(Constants.UserId);
-            if (CartsRepository.TryGetByUserId(Constants.UserId) != null)
+            var cart = cartsRepository.TryGetByUserId(constants.UserId);
+            if (cartsRepository.TryGetByUserId(constants.UserId) != null)
             {
-                var count = CartsRepository.TryGetByUserId(Constants.UserId).Items.Sum(p => p.Amount);
+                var count = cartsRepository.TryGetByUserId(constants.UserId).Items.Sum(p => p.Amount);
                 ViewBag.Count = count;
             }
             return View(cart);
@@ -28,7 +33,7 @@ namespace OnlineShopWebApp.Controllers
         public IActionResult Add (int productId)
         {
             var product = productInitialization.Products.FirstOrDefault(p => p.Id == productId);
-            CartsRepository.Add(product, Constants.UserId);
+            cartsRepository.Add(product, constants.UserId);
             return RedirectToAction("Index");
         }
 
