@@ -7,7 +7,7 @@ using OnlineShopWebApp.Models;
 
 namespace OnlineShopWebApp.Controllers
 {
-    public class ProductInitialization 
+    public class ProductInitialization : IProductInitialization
     {
 
         public List<Product> Products => new List<Product>
@@ -18,7 +18,7 @@ namespace OnlineShopWebApp.Controllers
              Cost = 500,
              Description = "Туристические ботинки для походов",
              ImagePath ="/Images/image1.jpg"
-             
+
             },
             new Product
             { Id = 2, Name = "Мужская обувь",
@@ -42,6 +42,6 @@ namespace OnlineShopWebApp.Controllers
 
 
 
-        
+
     }
 }

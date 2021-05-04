@@ -12,21 +12,21 @@ namespace OnlineShopWebApp.Controllers
 {
     public class ProductController : Controller
     {
-        private readonly Constants constants;
-        private readonly ProductInitialization productInitialization;
-        private readonly CartsRepository cartsRepository;
+        
+        private readonly IProductInitialization productInitialization;
+        private readonly ICartsRepository cartsRepository;
 
-        public ProductController(Constants constants , ProductInitialization productInitialization, CartsRepository cartsRepository)
+        public ProductController( IProductInitialization productInitialization, ICartsRepository cartsRepository)
         {
-            this.constants = constants;
+            
             this.productInitialization = productInitialization;
             this.cartsRepository = cartsRepository;
         }
         public IActionResult Index(int? Id)
         {
-            if (cartsRepository.TryGetByUserId(constants.UserId) != null)
+            if (cartsRepository.TryGetByUserId(Constants.UserId) != null)
             {
-                var count = cartsRepository.TryGetByUserId(constants.UserId).Items.Sum(p => p.Amount);
+                var count = cartsRepository.TryGetByUserId(Constants.UserId).Items.Sum(p => p.Amount);
                 ViewBag.Count = count;
             }
             var selectedProducts = productInitialization.Products.Where(p => p.Id == Id);

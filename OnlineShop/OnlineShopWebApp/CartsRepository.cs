@@ -6,11 +6,12 @@ using OnlineShopWebApp.Models;
 
 namespace OnlineShopWebApp
 {
-    public  class CartsRepository
+    public class CartsRepository : ICartsRepository
     {
-        private  List<Cart> carts = new List<Cart>();
+        public List<Cart> carts = new List<Cart>();
 
-        public  Cart TryGetByUserId(string userId)
+
+        public Cart TryGetByUserId(string userId)
         {
             return carts.FirstOrDefault(c => c.UserId == userId);
         }
@@ -18,7 +19,7 @@ namespace OnlineShopWebApp
         public void Add(Product product, string userId)
         {
             var existingCart = TryGetByUserId(userId);
-            if (existingCart ==null)
+            if (existingCart == null)
             {
                 var newCart = new Cart
                 {
@@ -39,7 +40,7 @@ namespace OnlineShopWebApp
             else
             {
                 var existingCartItem = existingCart.Items.
-                     FirstOrDefault(p=> p.Product.Id == product.Id);
+                     FirstOrDefault(p => p.Product.Id == product.Id);
                 if (existingCartItem != null)
                 {
                     existingCartItem.Amount += 1;
@@ -51,7 +52,7 @@ namespace OnlineShopWebApp
                         Id = Guid.NewGuid(),
                         Amount = 1,
                         Product = product
-                    }) ;
+                    });
                 }
             }
         }

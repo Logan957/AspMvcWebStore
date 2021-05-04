@@ -9,23 +9,23 @@ namespace OnlineShopWebApp.Controllers
 {
     public class CartController : Controller
     {
-        private readonly Constants constants;
-        private readonly ProductInitialization productInitialization;
-        private readonly CartsRepository cartsRepository;
+        
+        private readonly IProductInitialization productInitialization;
+        private readonly ICartsRepository cartsRepository;
 
-        public CartController( Constants constants, ProductInitialization productInitialization, CartsRepository cartsRepository)
+        public CartController(  IProductInitialization productInitialization, ICartsRepository cartsRepository)
         {
-            this.constants = constants;
+            
             this.productInitialization = productInitialization;
             this.cartsRepository = cartsRepository;
         }
 
         public IActionResult Index()
         {
-            var cart = cartsRepository.TryGetByUserId(constants.UserId);
-            if (cartsRepository.TryGetByUserId(constants.UserId) != null)
+            var cart = cartsRepository.TryGetByUserId(Constants.UserId);
+            if (cartsRepository.TryGetByUserId(Constants.UserId) != null)
             {
-                var count = cartsRepository.TryGetByUserId(constants.UserId).Items.Sum(p => p.Amount);
+                var count = cartsRepository.TryGetByUserId(Constants.UserId).Items.Sum(p => p.Amount);
                 ViewBag.Count = count;
             }
             return View(cart);
@@ -33,7 +33,7 @@ namespace OnlineShopWebApp.Controllers
         public IActionResult Add (int productId)
         {
             var product = productInitialization.Products.FirstOrDefault(p => p.Id == productId);
-            cartsRepository.Add(product, constants.UserId);
+            cartsRepository.Add(product, Constants.UserId);
             return RedirectToAction("Index");
         }
 
