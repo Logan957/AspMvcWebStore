@@ -8,9 +8,14 @@ namespace OnlineShopWebApp
 {
     public class CartsRepository : ICartsRepository
     {
-        public List<Cart> carts = new List<Cart>();
+        private List<Cart> carts;
+        
+        public List<Cart> Carts { get => carts; }
 
-
+        public CartsRepository() 
+        {
+            carts = new List<Cart>();
+        }
         public Cart TryGetByUserId(string userId)
         {
             return carts.FirstOrDefault(c => c.UserId == userId);

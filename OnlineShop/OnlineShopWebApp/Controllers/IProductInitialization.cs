@@ -5,6 +5,6 @@ namespace OnlineShopWebApp.Controllers
 {
     public interface IProductInitialization
     {
-        List<Product> Products { get; }
+      public List<Product> Products { get;  }
     }
 }
