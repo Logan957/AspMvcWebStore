@@ -36,7 +36,18 @@ namespace OnlineShopWebApp.Controllers
             cartsRepository.Add(product, Constants.UserId);
             return RedirectToAction("Index");
         }
+        public IActionResult Clear()
+        {
+            cartsRepository.CartClear(Constants.UserId);
+            return RedirectToAction("Index");
+        }
+        public IActionResult Change(int productId, string operation) 
+        {
+            var product = productInitialization.Products.FirstOrDefault(p => p.Id == productId);
+            cartsRepository.ChangeCount( product, Constants.UserId, operation);
+            return RedirectToAction("Index");
 
+        }
 
 
     }

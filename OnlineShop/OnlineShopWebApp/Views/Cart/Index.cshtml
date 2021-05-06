@@ -2,7 +2,7 @@
 
 @if (Model == null)
 {
-    <h3>Карзина пустая</h3>
+    <h3>Корзина пустая</h3>
 }
 else
 {
@@ -20,17 +20,19 @@ else
                 <tbody>
                     @foreach (var p in Model.Items)
                     {
-                        <tr>
-                            <td>@p.Product.Name</td>
-                            <td>@p.Product.Cost</td>
-                            <td>@p.Amount</td>
-                            <td>@p.FullPrice</td>
-                        </tr>
+                    <tr>
+                        <td>@p.Product.Name</td>
+                        <td>@p.Product.Cost</td>
+                        <td><a  href="/Cart/Change?productId=@p.Product.Id&operation=minus">-</a>@p.Amount<a  href="/Cart/Change?productId=@p.Product.Id&operation=%2b">+</a></td>
+                        <td>@p.FullPrice</td>
+                        
+                    </tr>
                     }
                 </tbody>
             </table>
             <h3>Общая стоимость выбранного товара @Model.Cost.ToString("c")</h3>
             <p> <a class="btn btn-success" role="button" href="#">Оформить заказ</a> </p>
+            <p> <a class="btn btn-danger" role="button" href="/Cart/Clear">Очистить корзину</a> </p>
         </div>
     </div>
 }

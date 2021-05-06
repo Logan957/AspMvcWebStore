@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using OnlineShopWebApp.Models;
 
-namespace OnlineShopWebApp
+namespace OnlineShopWebApp.Controllers
 {
     public class CartsRepository : ICartsRepository
     {
@@ -15,6 +15,33 @@ namespace OnlineShopWebApp
         public CartsRepository() 
         {
             carts = new List<Cart>();
+        }
+        public void  CartClear( string userId) 
+        {
+            var existingCart = TryGetByUserId(userId);
+            existingCart.Items.Clear();
+        }
+        public void ChangeCount( Product product, string userId,string operation ) 
+        {
+            var existingCart = TryGetByUserId(userId);
+            var existingCartItem = existingCart.Items.
+                     FirstOrDefault(p => p.Product.Id == product.Id);
+            //Очень странная проблема , если я передам string как "-" и "+" ,то он почему-то "-" обрабатывает правильно , а при "+" в CartController прилетит null
+            if (operation == "+")
+            {
+                existingCartItem.Amount += 1;
+            }
+            else
+            {
+                if ( existingCartItem.Amount == 1) 
+                {
+                    existingCart.Items.Remove(existingCartItem);
+                }
+                else
+                existingCartItem.Amount -= 1;
+                
+            }
+
         }
         public Cart TryGetByUserId(string userId)
         {
