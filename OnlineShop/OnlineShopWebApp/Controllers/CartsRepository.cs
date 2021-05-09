@@ -19,7 +19,7 @@ namespace OnlineShopWebApp.Controllers
         public void  CartClear( string userId) 
         {
             var existingCart = TryGetByUserId(userId);
-            existingCart.Items.Clear();
+            carts.Remove(existingCart);
         }
         public void ChangeCount( Product product, string userId,string operation ) 
         {

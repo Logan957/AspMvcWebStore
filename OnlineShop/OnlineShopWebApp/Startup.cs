@@ -27,6 +27,7 @@ namespace OnlineShopWebApp
             
             services.AddSingleton<IProductInitialization ,ProductInitialization>();
             services.AddSingleton<ICartsRepository,CartsRepository>();
+            services.AddSingleton<IOrdersRepository, OrdersRepository>();
             services.AddControllersWithViews();
         }
 
