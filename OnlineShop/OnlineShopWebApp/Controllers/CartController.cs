@@ -4,16 +4,17 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using OnlineShopWebApp.Models;
+using OnlineShopWebApp.Repositories;
 
 namespace OnlineShopWebApp.Controllers
 {
     public class CartController : Controller
     {
         
-        private readonly IProductInitialization productInitialization;
+        private readonly IProductRepository productInitialization;
         private readonly ICartsRepository cartsRepository;
 
-        public CartController(  IProductInitialization productInitialization, ICartsRepository cartsRepository)
+        public CartController(  IProductRepository productInitialization, ICartsRepository cartsRepository)
         {
             
             this.productInitialization = productInitialization;
@@ -48,6 +49,7 @@ namespace OnlineShopWebApp.Controllers
             return RedirectToAction("Index");
 
         }
+      
 
 
     }

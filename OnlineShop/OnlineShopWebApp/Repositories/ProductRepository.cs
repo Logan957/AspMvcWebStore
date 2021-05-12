@@ -5,9 +5,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using OnlineShopWebApp.Models;
 
-namespace OnlineShopWebApp.Controllers
+namespace OnlineShopWebApp.Repositories
 {
-    public class ProductInitialization : IProductInitialization
+    public class ProductRepository : IProductRepository
     {
         private List<Product> products;
 
@@ -15,7 +15,7 @@ namespace OnlineShopWebApp.Controllers
         {
             get => products;
         }
-        public ProductInitialization()
+        public ProductRepository()
         {
             
             products = new List<Product> {

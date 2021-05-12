@@ -1,7 +1,7 @@
 ﻿using OnlineShopWebApp.Models;
 using System.Collections.Generic;
 
-namespace OnlineShopWebApp.Controllers
+namespace OnlineShopWebApp.Repositories
 {
     public interface ICartsRepository
     {

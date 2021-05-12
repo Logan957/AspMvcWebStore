@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using OnlineShopWebApp.Controllers;
+using OnlineShopWebApp.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,9 +26,10 @@ namespace OnlineShopWebApp
         public void ConfigureServices(IServiceCollection services)
         {
             
-            services.AddSingleton<IProductInitialization ,ProductInitialization>();
+            services.AddSingleton<IProductRepository ,ProductRepository>();
             services.AddSingleton<ICartsRepository,CartsRepository>();
             services.AddSingleton<IOrdersRepository, OrdersRepository>();
+            services.AddSingleton<IComparisonRepository, ComparisonRepository>();
             services.AddControllersWithViews();
         }
 

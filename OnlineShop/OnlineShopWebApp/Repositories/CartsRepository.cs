@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using OnlineShopWebApp.Models;
 
-namespace OnlineShopWebApp.Controllers
+namespace OnlineShopWebApp.Repositories
 {
     public class CartsRepository : ICartsRepository
     {

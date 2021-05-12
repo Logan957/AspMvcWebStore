@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using OnlineShopWebApp.Models;
+using OnlineShopWebApp.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -13,10 +14,10 @@ namespace OnlineShopWebApp.Controllers
     public class ProductController : Controller
     {
         
-        private readonly IProductInitialization productInitialization;
+        private readonly IProductRepository productInitialization;
         private readonly ICartsRepository cartsRepository;
 
-        public ProductController( IProductInitialization productInitialization, ICartsRepository cartsRepository)
+        public ProductController( IProductRepository productInitialization, ICartsRepository cartsRepository)
         {
             
             this.productInitialization = productInitialization;
@@ -33,6 +34,7 @@ namespace OnlineShopWebApp.Controllers
             return View(selectedProducts);
             
            
-        }        
+        }
+       
     }
 }

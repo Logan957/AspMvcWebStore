@@ -11,6 +11,7 @@
             <a style="color:black" href="/Product/Index/@p.Id">@p.Name</a>
             @p.Cost.ToString("c")
             <p> <a class="btn btn-primary" role="button" href="/Cart/add?productId=@p.Id">Добавить в корзину</a> </p>
+            <p><a href="/Home/AddToComparison?productId=@p.Id">В сравнение</a></p>
         </div>
       
     }

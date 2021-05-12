@@ -11,22 +11,10 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">OnlineShopWebApp</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-
-                        
-                        <p>  <a style="margin-left:550px" class="btn btn-dark" role="button" href="/Cart/Index"><img src="~/Images/cart.jpg" width="40"> Перейти в корзину @ViewBag.Count</a>  </p>
-                        
-                    </ul>
-                </div>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">На главную</a>
+                 <a class="navbar-brand" asp-area="" asp-controller="Comparison" asp-action="Index">Список сравнения</a>
+                 <p>  <a style="margin-left:550px" class="btn btn-dark" role="button" href="/Cart/Index"><img src="~/Images/cart.jpg" width="40"> Перейти в корзину @ViewBag.Count</a>  </p>
+  
             </div>
         </nav>
     </header>

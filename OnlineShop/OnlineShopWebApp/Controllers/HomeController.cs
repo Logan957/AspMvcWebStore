@@ -4,21 +4,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using OnlineShopWebApp.Controllers;
-
+using OnlineShopWebApp.Repositories;
 
 namespace OnlineShopWebApp.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IProductInitialization productInitialization;
+        private readonly IProductRepository productInitialization;
         private readonly ICartsRepository cartsRepository;
-        
+        private readonly IComparisonRepository comparisonRepository;
 
-        public HomeController(IProductInitialization productInitialization, ICartsRepository cartsRepository)
+
+        public HomeController(IProductRepository productInitialization, ICartsRepository cartsRepository, IComparisonRepository comparisonRepository)
         {
             this.productInitialization = productInitialization;
             this.cartsRepository = cartsRepository;
-            
+            this.comparisonRepository = comparisonRepository;
         }
         public IActionResult Index()
         {
@@ -29,6 +30,11 @@ namespace OnlineShopWebApp.Controllers
             }
             return View(productInitialization.Products);
         }
-
+        public IActionResult AddToComparison(int productId)
+        {
+            var selectedProducts = productInitialization.Products.FirstOrDefault(p => p.Id == productId);
+            comparisonRepository.AddToComparison(selectedProducts);
+            return RedirectToAction("Index");
+        }
     }
 }
