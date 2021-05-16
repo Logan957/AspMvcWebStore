@@ -26,7 +26,6 @@ namespace OnlineShopWebApp.Repositories
             var existingCart = TryGetByUserId(userId);
             var existingCartItem = existingCart.Items.
                      FirstOrDefault(p => p.Product.Id == product.Id);
-            //Очень странная проблема , если я передам string как "-" и "+" ,то он почему-то "-" обрабатывает правильно , а при "+" в CartController прилетит null
             if (operation == "+")
             {
                 existingCartItem.Amount += 1;

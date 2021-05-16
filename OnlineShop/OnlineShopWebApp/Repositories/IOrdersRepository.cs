@@ -5,9 +5,7 @@ namespace OnlineShopWebApp.Repositories
 {
     public interface IOrdersRepository
     {
-        List<Cart> Orders { get; }
-
-        void Add(Cart cart);
-        Cart TryGetByUserId(string userId);
+        List<Order> Orders { get; }
+        void Add(Cart cart, ByersData byersData);
     }
 }

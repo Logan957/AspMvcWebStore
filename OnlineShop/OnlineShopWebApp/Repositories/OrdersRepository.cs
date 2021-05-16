@@ -9,20 +9,18 @@ namespace OnlineShopWebApp.Repositories
 {
     public class OrdersRepository : IOrdersRepository
     {
-        private List<Cart> orders;
+        private List<Order> orders;
 
-        public List<Cart> Orders { get => orders; }
+        public List<Order> Orders { get => orders; }
         public OrdersRepository()
         {
-            orders = new List<Cart>();
+            orders = new List<Order>();
         }
-        public void Add(Cart cart)
+        public void Add(Cart cart,ByersData byersData)
         {
-            orders.Add(cart);
+            var newOrder = new Order { ByersData = byersData, Cart = cart };
+            orders.Add(newOrder);
         }
-        public Cart TryGetByUserId(string userId)
-        {
-            return orders.FirstOrDefault(c => c.UserId == userId);
-        }
+       
     }
 }

@@ -1,20 +1,22 @@
 ﻿@model Cart
 
+<form method="post">
     <div class="row">
         <div class="col">
             <label>Имя</label>
             <div>
-                <input type="text" />
+                <input type="text" name="name" />
             </div>
             <label>Номер телефона</label>
             <div>
-                <input type="text" />
+                <input type="text" name="phone" />
             </div>
             <label>Адрес доставки</label>
             <div>
-                <input type="text" />
+                <input type="text" name="address" />
             </div>
         </div>
     </div>
     <br>
-    <p> <a style="margin-left:50%" class="btn btn-success" role="button" href="/Order/Buy">Перейти к оплате</a> </p>
+    <p><button type="submit" class="btn btn-success" asp-controller="Order" asp-action="Buy">Перейти к оплате</button></p>
+</form> 
