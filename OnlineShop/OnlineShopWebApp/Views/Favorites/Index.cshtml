@@ -1,0 +1,18 @@
+﻿@model IEnumerable<Product>;
+@if (Model.Count() == 0)
+{
+    <h1>Список избранного пуст</h1>
+}
+else
+{ <div class="row">
+        @foreach (var p in Model)
+        {
+            <div class="col-3 ">
+                <p><img width="200" height="100" src="@p.ImagePath" /></p>
+                <p> @p.Name </p>
+                <p> @p.Cost </p>
+            </div>
+        }
+    </div>
+    <p> <a class="btn btn-danger" role="button" href="/Favorites/Clear">Очистить список</a> </p>
+}

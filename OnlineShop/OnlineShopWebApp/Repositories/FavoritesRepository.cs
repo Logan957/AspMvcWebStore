@@ -3,30 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using OnlineShopWebApp.Models;
-
 namespace OnlineShopWebApp.Repositories
 {
-    public class ComparisonRepository : IComparisonRepository
+    public class FavoritesRepository : IFavoritesRepository
     {
         private List<Product> selectedProducts;
-
         public List<Product> SelectedProducts { get => selectedProducts; }
+        public FavoritesRepository() 
+        {
+          selectedProducts = new List<Product>();
+        }
 
-        public ComparisonRepository()
+        public void AddToFavorites(Product product)
         {
-            selectedProducts = new List<Product>();
-        }
-        public void Clear() 
-        {
-            selectedProducts.Clear();
-        }
-        public void AddToComparison(Product product) 
-        {
-            if (!selectedProducts.Contains(product)) 
+            if (!selectedProducts.Contains(product))
             {
                 selectedProducts.Add(product);
             }
-           
         }
 
     }

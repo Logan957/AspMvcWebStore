@@ -14,13 +14,13 @@ namespace OnlineShopWebApp.Controllers
     public class ProductController : Controller
     {
         
-        private readonly IProductRepository productInitialization;
+        private readonly IProductRepository productRepository;
         private readonly ICartsRepository cartsRepository;
 
-        public ProductController( IProductRepository productInitialization, ICartsRepository cartsRepository)
+        public ProductController( IProductRepository productRepository, ICartsRepository cartsRepository)
         {
             
-            this.productInitialization = productInitialization;
+            this.productRepository = productRepository;
             this.cartsRepository = cartsRepository;
         }
         public IActionResult Index(int? Id)
@@ -30,7 +30,7 @@ namespace OnlineShopWebApp.Controllers
                 var count = cartsRepository.TryGetByUserId(Constants.UserId).Items.Sum(p => p.Amount);
                 ViewBag.Count = count;
             }
-            var selectedProducts = productInitialization.Products.Where(p => p.Id == Id);
+            var selectedProducts = productRepository.Products.Where(p => p.Id == Id);
             return View(selectedProducts);
             
            

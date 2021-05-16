@@ -12,9 +12,10 @@
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">На главную</a>
-                 <a class="navbar-brand" asp-area="" asp-controller="Comparison" asp-action="Index">Список сравнения</a>
-                 <p>  <a style="margin-left:550px" class="btn btn-dark" role="button" href="/Cart/Index"><img src="~/Images/cart.jpg" width="40"> Перейти в корзину @ViewBag.Count</a>  </p>
-  
+                <a class="navbar-brand" asp-area="" asp-controller="Comparison" asp-action="Index">Список сравнения</a>
+                <a style="margin-left:20px" class="navbar-brand" asp-area="" asp-controller="Favorites" asp-action="Index">Избранное</a>
+                <p>  <a style="margin-left:550px" class="btn btn-dark" role="button" href="/Cart/Index"><img src="~/Images/cart.jpg" width="40"> Перейти в корзину @ViewBag.Count</a>  </p>
+
             </div>
         </nav>
     </header>
@@ -25,9 +26,7 @@
     </div>
 
     <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2021 - OnlineShopWebApp - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
+
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

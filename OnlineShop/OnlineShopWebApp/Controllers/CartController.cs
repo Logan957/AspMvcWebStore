@@ -11,13 +11,13 @@ namespace OnlineShopWebApp.Controllers
     public class CartController : Controller
     {
         
-        private readonly IProductRepository productInitialization;
+        private readonly IProductRepository productRepository;
         private readonly ICartsRepository cartsRepository;
 
-        public CartController(  IProductRepository productInitialization, ICartsRepository cartsRepository)
+        public CartController(  IProductRepository productRepository, ICartsRepository cartsRepository)
         {
             
-            this.productInitialization = productInitialization;
+            this.productRepository = productRepository;
             this.cartsRepository = cartsRepository;
         }
 
@@ -33,7 +33,7 @@ namespace OnlineShopWebApp.Controllers
         }
         public IActionResult Add (int productId)
         {
-            var product = productInitialization.Products.FirstOrDefault(p => p.Id == productId);
+            var product = productRepository.Products.FirstOrDefault(p => p.Id == productId);
             cartsRepository.Add(product, Constants.UserId);
             return RedirectToAction("Index");
         }
@@ -44,7 +44,7 @@ namespace OnlineShopWebApp.Controllers
         }
         public IActionResult Change(int productId, string operation) 
         {
-            var product = productInitialization.Products.FirstOrDefault(p => p.Id == productId);
+            var product = productRepository.Products.FirstOrDefault(p => p.Id == productId);
             cartsRepository.ChangeCount( product, Constants.UserId, operation);
             return RedirectToAction("Index");
 

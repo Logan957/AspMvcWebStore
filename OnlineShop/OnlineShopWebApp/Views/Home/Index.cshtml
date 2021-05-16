@@ -6,13 +6,17 @@
 <div class="row">
     @foreach (var p in Model)
     {
-        <div class="col-3 card ">
-            <img height="150" src="@p.ImagePath" />
-            <a style="color:black" href="/Product/Index/@p.Id">@p.Name</a>
-            @p.Cost.ToString("c")
-            <p> <a class="btn btn-primary" role="button" href="/Cart/add?productId=@p.Id">Добавить в корзину</a> </p>
-            <p><a href="/Home/AddToComparison?productId=@p.Id">В сравнение</a></p>
-        </div>
-      
+    <div class="card border-secondary col-3 card ">
+        <div class="card-header" style="background-color:white"></div>
+        <img height="150" src="@p.ImagePath" />
+        <a style="color:black" href="/Product/Index/@p.Id">@p.Name</a>
+        @p.Cost.ToString("c")
+        <p> <a class="btn btn-dark" role="button" href="/Cart/add?productId=@p.Id">Добавить в корзину</a> </p>
+        <p>
+            <a class="btn btn-outline-dark" type="button" href="/Favorites/AddToFavorites?productId=@p.Id">В избранное</a>
+            <a class="btn btn-outline-dark" type="button" href="/Comparison/AddToComparison?productId=@p.Id">В сравнение</a>
+        </p>
+    </div>
+
     }
 </div>

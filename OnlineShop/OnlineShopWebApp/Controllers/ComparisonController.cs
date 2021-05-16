@@ -10,10 +10,12 @@ namespace OnlineShopWebApp.Controllers
     public class ComparisonController : Controller
     {
         private readonly IComparisonRepository comparisonRepository;
+        private readonly IProductRepository productRepository;
 
-        public ComparisonController(IComparisonRepository comparisonRepository)
+        public ComparisonController(IComparisonRepository comparisonRepository, IProductRepository productRepository)
         {
             this.comparisonRepository = comparisonRepository;
+            this.productRepository = productRepository;
         }
 
         public IActionResult Index()
@@ -25,6 +27,12 @@ namespace OnlineShopWebApp.Controllers
         {
             comparisonRepository.SelectedProducts.Clear();
             return RedirectToAction("Index");
+        }
+        public IActionResult AddToComparison(int productId)
+        {
+            var selectedProducts = productRepository.Products.FirstOrDefault(p => p.Id == productId);
+            comparisonRepository.AddToComparison(selectedProducts);
+            return RedirectToAction("Index","Home");
         }
     }
 }

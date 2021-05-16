@@ -10,16 +10,18 @@ namespace OnlineShopWebApp.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IProductRepository productInitialization;
+        private readonly IProductRepository productRepository;
         private readonly ICartsRepository cartsRepository;
         private readonly IComparisonRepository comparisonRepository;
+        private readonly IFavoritesRepository favoritesRepository;
 
 
-        public HomeController(IProductRepository productInitialization, ICartsRepository cartsRepository, IComparisonRepository comparisonRepository)
+        public HomeController(IProductRepository productRepository, ICartsRepository cartsRepository, IComparisonRepository comparisonRepository, IFavoritesRepository favoritesRepository)
         {
-            this.productInitialization = productInitialization;
+            this.productRepository = productRepository;
             this.cartsRepository = cartsRepository;
             this.comparisonRepository = comparisonRepository;
+            this.favoritesRepository = favoritesRepository;
         }
         public IActionResult Index()
         {
@@ -28,13 +30,10 @@ namespace OnlineShopWebApp.Controllers
                 var count = cartsRepository.TryGetByUserId(Constants.UserId).Items.Sum(p => p.Amount);
                 ViewBag.Count = count;
             }
-            return View(productInitialization.Products);
+            return View(productRepository.Products);
         }
-        public IActionResult AddToComparison(int productId)
-        {
-            var selectedProducts = productInitialization.Products.FirstOrDefault(p => p.Id == productId);
-            comparisonRepository.AddToComparison(selectedProducts);
-            return RedirectToAction("Index");
-        }
+       
+       
+
     }
 }
