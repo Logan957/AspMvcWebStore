@@ -25,11 +25,6 @@ namespace OnlineShopWebApp.Controllers
         }
         public IActionResult Index(int? Id)
         {
-            if (cartsRepository.TryGetByUserId(Constants.UserId) != null)
-            {
-                var count = cartsRepository.TryGetByUserId(Constants.UserId).Items.Sum(p => p.Amount);
-                ViewBag.Count = count;
-            }
             var selectedProducts = productRepository.Products.Where(p => p.Id == Id);
             return View(selectedProducts);
             

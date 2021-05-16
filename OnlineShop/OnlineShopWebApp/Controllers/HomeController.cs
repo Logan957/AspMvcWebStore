@@ -25,12 +25,7 @@ namespace OnlineShopWebApp.Controllers
         }
         public IActionResult Index()
         {
-            if (cartsRepository.TryGetByUserId(Constants.UserId) != null)
-            {
-                var count = cartsRepository.TryGetByUserId(Constants.UserId).Items.Sum(p => p.Amount);
-                ViewBag.Count = count;
-            }
-            return View(productRepository.Products);
+          return View(productRepository.Products);
         }
        
        
