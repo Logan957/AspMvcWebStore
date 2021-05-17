@@ -1,10 +1,11 @@
 ﻿<header>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow ">
         <div class="container">
-            
+
             <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">На главную</a>
             <a class="navbar-brand" asp-area="" asp-controller="Comparison" asp-action="Index">Список сравнения</a>
             <a style="margin-left:20px" class="navbar-brand" asp-area="" asp-controller="Favorites" asp-action="Index">Избранное</a>
+            <a style="margin-left:20px" class="navbar-brand" asp-area="" asp-controller="Account" asp-action="Login">Войти</a>
             @await Component.InvokeAsync("Cart")
 
         </div>

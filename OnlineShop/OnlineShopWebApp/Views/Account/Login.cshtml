@@ -1,0 +1,20 @@
+﻿<form method="post">
+    <div class="row text-center">
+        <div class="col">
+            <h1>Вход</h1>
+            <div>
+                <input type="text" name="userName" placeholder="Логин" />
+            </div>
+            <div>
+                <input type="text" name="password" placeholder="Пароль" />
+            </div>
+            <div>
+                <input type="checkbox" name="checkResponsible" value="true" />
+                <label>Запомнить меня?</label>
+            </div>
+            <a asp-controller="Account" asp-action="Register">Регистрация нового пользователя</a>
+        </div>
+    </div>
+    <br>
+    <p align="center"><button  type="submit" class="btn btn-dark" asp-controller="Account" asp-action="Login">Войти</button></p>
+</form> 
